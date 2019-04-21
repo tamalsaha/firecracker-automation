@@ -34,7 +34,7 @@ public class Main {
             //Position on the first result, we assume as per the post there's only 1 row
             rs.next();
 
-            String json = (rs.getString(1));
+            String json = rs.getString(1);
             Gson gson = new GsonBuilder().create();
             JsonContent jsonContent = gson.fromJson(json, JsonContent.class);
 

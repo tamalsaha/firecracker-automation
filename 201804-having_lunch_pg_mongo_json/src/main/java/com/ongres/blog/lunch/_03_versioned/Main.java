@@ -36,7 +36,7 @@ public class Main {
 
             while (rs.next()) {
                 int version = rs.getInt(1);
-                String json = (rs.getString(2));
+                String json = rs.getString(2);
 
                 Object jsonContent = null;
                 switch (version) {

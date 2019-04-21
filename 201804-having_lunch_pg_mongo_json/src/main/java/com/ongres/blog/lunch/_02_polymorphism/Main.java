@@ -34,7 +34,7 @@ public class Main {
             StringBuffer sb = new StringBuffer();
 
             while(rs.next()) {
-                String json = (rs.getString(1));
+                String json = rs.getString(1);
                 JsonParser parser = new JsonParser();
                 JsonObject object = parser.parse(json).getAsJsonObject();
 
