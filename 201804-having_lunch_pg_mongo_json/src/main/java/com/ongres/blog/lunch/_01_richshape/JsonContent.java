@@ -15,7 +15,7 @@
  */
 
 
-package com.ongres.blog.lunch.richshape;
+package com.ongres.blog.lunch._01_richshape;
 
 
 import java.util.Arrays;

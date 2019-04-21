@@ -15,7 +15,7 @@
  */
 
 
-package com.ongres.blog.lunch.polymorphism;
+package com.ongres.blog.lunch._02_polymorphism;
 
 
 import com.google.gson.*;
