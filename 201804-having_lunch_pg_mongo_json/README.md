@@ -20,8 +20,8 @@ mvn clean package
 and run either of the executables discussed on the blog post:
 
 ```
-mvn exec:java -Djava.mainClass=com.ongres.blog.lunch._01_richshape.Main
-mvn exec:java -Djava.mainClass=com.ongres.blog.lunch._02_polymorphism.Main
-mvn exec:java -Djava.mainClass=com.ongres.blog.lunch._03_versioned.Main
+mvn exec:java -Dexec.mainClass=com.ongres.blog.lunch._01_richshape.Main
+mvn exec:java -Dexec.mainClass=com.ongres.blog.lunch._02_polymorphism.Main
+mvn exec:java -Dexec.mainClass=com.ongres.blog.lunch._03_versioned.Main
 ```
 
