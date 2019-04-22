@@ -41,7 +41,7 @@ public class Main {
                 Object jsonContent = null;
                 switch (version) {
                     case 1: jsonContent = gson.fromJson(json, JsonContent.class); break;
-                    case 2: jsonContent = gson.fromJson(json, JsonContent_v2.class); break;
+                    case 2: jsonContent = gson.fromJson(json, JsonContentV2.class); break;
                 }
 
                 System.out.println(jsonContent);

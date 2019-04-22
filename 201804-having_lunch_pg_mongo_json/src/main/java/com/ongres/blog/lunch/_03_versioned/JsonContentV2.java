@@ -21,7 +21,7 @@ package com.ongres.blog.lunch._03_versioned;
 import java.util.Arrays;
 
 
-public class JsonContent_v2 {
+public class JsonContentV2 {
     private String a;
     private int[] fn;
     private boolean j;
