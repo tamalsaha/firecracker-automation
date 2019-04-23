@@ -12,6 +12,7 @@ insert into foo2 values (
 ), (
         2, '{"cd": "2017-11-22T15:20:34.326Z", "props": {"a": "twelve", "fn": [10, 20, 30], "j": false}}'
 );
+
 create table foo3 (content jsonb);
 insert into foo3 values (
         '{"props": {"a": 12, "fn": [{"$numberDecimal": "10"}, 20, {"$numberLong": "30"}]}, "cd": {"$date": 1511364034326}}'
