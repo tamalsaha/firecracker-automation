@@ -71,20 +71,16 @@ public class Main {
 
             sb.append("{value=").append(element.getAsJsonPrimitive()).append("}");
         } else if(element.isJsonArray()) {
-            indentLevel++;
             sb.append("JsonArray\n");
             int i = 0;
             for(JsonElement element2 : element.getAsJsonArray()) {
-                walkMap(sb, indentLevel, "" + i++, element2);
+                walkMap(sb, indentLevel + 1, "" + i++, element2);
             }
-            indentLevel--;
         } else if (element.isJsonObject()) {
-            indentLevel++;
             sb.append("JsonDocument\n");
             for(Map.Entry<String,JsonElement> entry : element.getAsJsonObject().entrySet()) {
-                walkMap(sb, indentLevel++, entry.getKey(), entry.getValue());
+                walkMap(sb, indentLevel + 1, entry.getKey(), entry.getValue());
             }
-            indentLevel--;
         }
 
         sb.append("\n");
