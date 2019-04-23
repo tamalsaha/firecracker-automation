@@ -2,3 +2,6 @@
 *.iml
 201804-having_lunch_pg_mongo_json/src/main/resources/db.properties
 target/
+.project
+.classpath
+.settings/
