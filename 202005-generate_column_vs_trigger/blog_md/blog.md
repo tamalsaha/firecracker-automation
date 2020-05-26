@@ -119,7 +119,7 @@ CREATE EXTENSION trigger_test CASCADE;
 
 ```
 
-The data for tables must be loaded from insert_data.sql and update_data.sql files in this order.
+The data for tables must be loaded from *insert_data.sql* and *update_data.sql* files in this order.
 
   
 
