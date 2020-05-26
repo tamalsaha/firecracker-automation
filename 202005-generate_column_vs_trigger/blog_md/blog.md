@@ -77,7 +77,7 @@ For this test an extension [trigger_test](https://gitlab.com/ongresinc/blog-post
 
 * 1 GB RAM
 
-"General Purpose Disk (SSD)
+* General Purpose Disk (SSD)
 
   
   
@@ -96,7 +96,7 @@ For this test an extension [trigger_test](https://gitlab.com/ongresinc/blog-post
 
   
 
-#compilations
+**Compilations**
 
   
 
@@ -109,7 +109,7 @@ make && make install
   
   
 
-#Installation in the database
+**Installation in the database**
 
   
 
