@@ -28,29 +28,42 @@ update square_trgc set i = i+1 ;
 update square_trgc set i = i+1 ;
 update square_trgc set i = i+1 ;
 update square_trgc set i = i+1 ;
-update square_trgc set i = i+1 ;
-update square_trgc set i = i+1 ;
-update square_trgc set i = i+1 ;
-update square_trgc set i = i+1 ;
-update square_trgc set i = i+1 ;
-update square_trgc set i = i+1 ;
-update square_trgc set i = i+1 ;
-update square_trgc set i = i+1 ;
-update square_trgc set i = i+1 ;
-update square_trgc set i = i+1 ;
+
+
+update square_trgc_immutable set i = i+1 ;
+update square_trgc_immutable set i = i+1 ;
+update square_trgc_immutable set i = i+1 ;
+update square_trgc_immutable set i = i+1 ;
+update square_trgc_immutable set i = i+1 ;
+update square_trgc_immutable set i = i+1 ;
+update square_trgc_immutable set i = i+1 ;
+update square_trgc_immutable set i = i+1 ;
+update square_trgc_immutable set i = i+1 ;
+update square_trgc_immutable set i = i+1 ;
+update square_trgc_immutable set i = i+1 ;
+update square_trgc_immutable set i = i+1 ;
+update square_trgc_immutable set i = i+1 ;
+update square_trgc_immutable set i = i+1 ;
+update square_trgc_immutable set i = i+1 ;
+update square_trgc_immutable set i = i+1 ;
+update square_trgc_immutable set i = i+1 ;
+update square_trgc_immutable set i = i+1 ;
+update square_trgc_immutable set i = i+1 ;
+update square_trgc_immutable set i = i+1 ;
+update square_trgc_immutable set i = i+1 ;
+update square_trgc_immutable set i = i+1 ;
+update square_trgc_immutable set i = i+1 ;
+update square_trgc_immutable set i = i+1 ;
+update square_trgc_immutable set i = i+1 ;
+update square_trgc_immutable set i = i+1 ;
+update square_trgc_immutable set i = i+1 ;
+update square_trgc_immutable set i = i+1 ;
+update square_trgc_immutable set i = i+1 ;
+update square_trgc_immutable set i = i+1 ;
 
 
 
-update square_trgplpgsql set i = i+1 ;
-update square_trgplpgsql set i = i+1 ;
-update square_trgplpgsql set i = i+1 ;
-update square_trgplpgsql set i = i+1 ;
-update square_trgplpgsql set i = i+1 ;
-update square_trgplpgsql set i = i+1 ;
-update square_trgplpgsql set i = i+1 ;
-update square_trgplpgsql set i = i+1 ;
-update square_trgplpgsql set i = i+1 ;
-update square_trgplpgsql set i = i+1 ;
+
 update square_trgplpgsql set i = i+1 ;
 update square_trgplpgsql set i = i+1 ;
 update square_trgplpgsql set i = i+1 ;
@@ -84,16 +97,39 @@ update square_trgplpgsql set i = i+1 ;
 
 
 
-update square_gc set i = i+1 ;
-update square_gc set i = i+1 ;
-update square_gc set i = i+1 ;
-update square_gc set i = i+1 ;
-update square_gc set i = i+1 ;
-update square_gc set i = i+1 ;
-update square_gc set i = i+1 ;
-update square_gc set i = i+1 ;
-update square_gc set i = i+1 ;
-update square_gc set i = i+1 ;
+update square_trgplpgsql_immutable set i = i+1 ;
+update square_trgplpgsql_immutable set i = i+1 ;
+update square_trgplpgsql_immutable set i = i+1 ;
+update square_trgplpgsql_immutable set i = i+1 ;
+update square_trgplpgsql_immutable set i = i+1 ;
+update square_trgplpgsql_immutable set i = i+1 ;
+update square_trgplpgsql_immutable set i = i+1 ;
+update square_trgplpgsql_immutable set i = i+1 ;
+update square_trgplpgsql_immutable set i = i+1 ;
+update square_trgplpgsql_immutable set i = i+1 ;
+update square_trgplpgsql_immutable set i = i+1 ;
+update square_trgplpgsql_immutable set i = i+1 ;
+update square_trgplpgsql_immutable set i = i+1 ;
+update square_trgplpgsql_immutable set i = i+1 ;
+update square_trgplpgsql_immutable set i = i+1 ;
+update square_trgplpgsql_immutable set i = i+1 ;
+update square_trgplpgsql_immutable set i = i+1 ;
+update square_trgplpgsql_immutable set i = i+1 ;
+update square_trgplpgsql_immutable set i = i+1 ;
+update square_trgplpgsql_immutable set i = i+1 ;
+update square_trgplpgsql_immutable set i = i+1 ;
+update square_trgplpgsql_immutable set i = i+1 ;
+update square_trgplpgsql_immutable set i = i+1 ;
+update square_trgplpgsql_immutable set i = i+1 ;
+update square_trgplpgsql_immutable set i = i+1 ;
+update square_trgplpgsql_immutable set i = i+1 ;
+update square_trgplpgsql_immutable set i = i+1 ;
+update square_trgplpgsql_immutable set i = i+1 ;
+update square_trgplpgsql_immutable set i = i+1 ;
+update square_trgplpgsql_immutable set i = i+1 ;
+
+
+
 update square_gc set i = i+1 ;
 update square_gc set i = i+1 ;
 update square_gc set i = i+1 ;

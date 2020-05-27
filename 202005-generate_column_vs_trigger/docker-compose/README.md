@@ -16,7 +16,9 @@ For reproduce the test see the following steps:
  ```
  docker-compose exec my_postgres12 /bin/bash -c  "apt-get update && apt-get install -y make gcc postgresql-server-dev-12 && \
   echo shared_preload_libraries=\'pg_stat_statements\' >> /var/lib/postgresql/data/postgresql.conf &&\
-  echo shared_buffers=\'256MB\' >> /var/lib/postgresql/data/postgresql.conf" 
+  echo shared_buffers=\'256MB\' >> /var/lib/postgresql/data/postgresql.conf &&\
+  echo max_wal_size=\'5GB\' >> /var/lib/postgresql/data/postgresql.conf  &&\
+  echo Checkpoint_timeout=\'30 min\' >> /var/lib/postgresql/data/postgresql.conf" 
  ```
  
 **Restart the container for apply the change to install the extension trigger_test**
