@@ -1,7 +1,0 @@
-#extension
-comment = 'Extension for test trigger vs generated columns '
-default_version = '0.0.1'
-relocatable = true
-module_pathname = '$libdir/trigger_test'
-superuser = true
-requires = 'pg_stat_statements'
