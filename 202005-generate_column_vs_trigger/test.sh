@@ -13,8 +13,7 @@ do
         echo "-- Updates on ${table}"
         for it in $(seq 1 20)
         do
-                docker-compose exec my_postgres12 /bin/bash -c  "psql -U postgres -d test -c \"update${table} set ts = now() WHERE i = round(random()*${maxi}-1);\""
+                docker-compose exec my_postgres12 /bin/bash -c  "psql -U postgres -d test -c \"update ${table} set ts = now() WHERE i = round(random()*${maxi}-1);\""
         done     
 done
-
 

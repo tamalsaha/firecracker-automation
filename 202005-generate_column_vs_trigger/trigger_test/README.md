@@ -22,7 +22,7 @@ CREATE EXTENSION trigger_test CASCADE;
 ```
 
 **LOAD DATA**
-The data to test is locate in the insert_data.sql and update_data.sql files, please load these files, first insert_data.sql and then update_data.sql
+The data to test is locate in the insert_data.sql and update_data.sql files, please load these files, first *insert_data.sql* and then *update_data.sql*
 
 
 
@@ -35,7 +35,7 @@ round(min_time::numeric,2) as min_time,
 round(max_time::numeric,2)as  max_time,
 round(mean_time::numeric,2) as mean_time,
 round(stddev_time::numeric,2) as stddev_time,
-query::character varying(30) 
+query::character varying(40) 
 from pg_stat_statements where query like '%insert into square_%' order by 7 ;
 ```
 
@@ -48,7 +48,7 @@ round(min_time::numeric,2) as min_time,
 round(max_time::numeric,2)as  max_time,
 round(mean_time::numeric,2) as mean_time,
 round(stddev_time::numeric,2) as stddev_time,
-query::character varying(30) 
+query::character varying(40) 
 from pg_stat_statements where query like '%update square_%' order by 7 ;
 ```
 
