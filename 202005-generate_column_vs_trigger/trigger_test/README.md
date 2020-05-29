@@ -24,6 +24,17 @@ CREATE EXTENSION trigger_test CASCADE;
 **LOAD DATA**
 The data to test is locate in the insert_data.sql and update_data.sql files, please load these files, first *insert_data.sql* and then *update_data.sql*
 
+```
+psql -U postgres -d test -f /trigger_test/insert_data.sql
+psql -U postgres -d test -f /trigger_test/update_data.sql
+```
+or 
+
+```
+pgbench -U postgres -n -T 60 -c 1 -f /trigger_test/insert_data.sql test 
+pgbench -U postgres -n -T 180 -c 1 -f /trigger_test/update_data.sql test
+```
+
 
 
  **ANALYZE THE INSERT RESULT**

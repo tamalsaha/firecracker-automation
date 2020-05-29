@@ -23,7 +23,7 @@ docker-compose restart my_postgres12
 
 until docker-compose exec my_postgres12 /bin/bash -c "pg_isready -Upostgres -d test" ; do sleep 1; done
 
-docker-compose exec my_postgres12 /bin/bash -c  "psql -U postgres -d test -c \"DROP EXTENSION IF EXISTS trigger_test CASCADE;\" &&
- psql -U postgres -d test -c \"CREATE EXTENSION IF NOT EXISTS trigger_test CASCADE;\""
+##docker-compose exec my_postgres12 /bin/bash -c  "psql -U postgres -d test -c \"DROP EXTENSION IF EXISTS trigger_test CASCADE;\" &&
+## psql -U postgres -d test -c \"CREATE EXTENSION IF NOT EXISTS trigger_test CASCADE;\""
 
 
