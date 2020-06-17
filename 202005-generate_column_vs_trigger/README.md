@@ -28,6 +28,26 @@ The `init.sh` phase could take some time and should setup all the necessary piec
 This laboratory, contains all the functions and related tables in the `trigger_test` folder, which can be compiled and added to the postgres instance. For reference, see `init.sh`
 
  
+## Results calculation
+
+### INSERT operations results
+ 
+```sql
+SELECT   round(mean_time::numeric, 2) AS mean_time,
+  query::character varying(40)
+FROM  pg_stat_statements WHERE query LIKE '%insert into tab_%'
+ORDER BY 7;
+```
+
+### UPDATE operations
+
+```sql
+SELECT     round(mean_time::numeric, 2) AS mean_time,
+   query::character varying(40)
+FROM  pg_stat_statements WHERE query LIKE '%update tab_%'
+ORDER BY 7;
+```
+
 
 Anthony R. Sotolongo León
 asotolongo@ongres.com
