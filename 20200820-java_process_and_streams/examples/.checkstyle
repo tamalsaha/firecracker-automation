@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<fileset-config file-format-version="1.2.0" simple-config="false" sync-formatter="true">
+  <local-check-config name="maven-checkstyle-plugin validate" location="file:/home/matteom/Repositories/gitlab.com/ongresinc/build-tools/build-resources/target/classes/com/ongres/checkstyle/checkstyle.xml" type="remote" description="maven-checkstyle-plugin configuration validate">
+    <property name="checkstyle.header.file" value="/home/matteom/eclipse/stackgres/.metadata/.plugins/org.eclipse.core.resources/.projects/com.ongres.java-process-examples/com.basistech.m2e.code.quality.checkstyleConfigurator/checkstyle-header-validate.txt"/>
+    <property name="config_loc" value="/home/matteom/Repositories/gitlab.com/ongresinc/blog-posts-src/20200820-java_process_and_streams/examples/target/build-resources/com/ongres/checkstyle/"/>
+    <property name="checkstyle.cache.file" value="${project_loc}/target/checkstyle-cachefile"/>
+    <property name="checkstyle.suppressions.file" value="/home/matteom/eclipse/stackgres/.metadata/.plugins/org.eclipse.core.resources/.projects/com.ongres.java-process-examples/com.basistech.m2e.code.quality.checkstyleConfigurator/checkstyle-suppressions-validate.xml"/>
+  </local-check-config>
+  <fileset name="java-sources-validate" enabled="true" check-config-name="maven-checkstyle-plugin validate" local="true">
+    <file-match-pattern match-pattern="^src/main/java.*\/.*\.java" include-pattern="true"/>
+    <file-match-pattern match-pattern="^src/test/java/.*\/.*\.java" include-pattern="true"/>
+    <file-match-pattern match-pattern="^src/main/resources.*\.properties" include-pattern="true"/>
+    <file-match-pattern match-pattern="^src/test/resources.*\.properties" include-pattern="true"/>
+  </fileset>
+</fileset-config>
