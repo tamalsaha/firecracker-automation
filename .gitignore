@@ -5,3 +5,6 @@ target/
 .project
 .classpath
 .settings/
+202012-firecracker_cloud_image_automation/keypairs/
+202012-firecracker_cloud_image_automation/disks/
+202012-firecracker_cloud_image_automation/images/
