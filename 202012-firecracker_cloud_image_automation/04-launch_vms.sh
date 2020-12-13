@@ -46,14 +46,17 @@ function launch_vm() {
 	local tmpfile=/tmp/.$RANDOM-$RANDOM
 	local socket=$FIRECRACKER_SOCKET.$instance_number
 	local instance_id="id-"$RANDOM-$RANDOM
+	local log_file=/tmp/.$instance_id.log
 	
 	# Start firecracker daemon
 	(
 		rm -f $socket
-		$FIRECRACKER --api-sock $socket &> /dev/null &
+		touch $log_file
+		$FIRECRACKER --api-sock $socket --log-path $log_file --level Debug &> /dev/null &
 		pid=$!
 		mkdir -p $FIRECRACKER_PID_DIR
 		echo $pid > $FIRECRACKER_PID_DIR/$pid
+		echo "Started Firecracker with pid=$pid, logs: $log_file"
 	)
 	
 	# Wait for API server to start
@@ -130,7 +133,7 @@ function launch_vm() {
 	
 	# Start VM
 	firecracker_http_file PUT 'actions' conf/firecracker/instance-start.json
-	[ $? -eq 0 ] && echo "Instace $instance_id started. SSH with ssh -i $KEYPAIR_DIR/$DEFAULT_KP fc@$instance_ip"
+	[ $? -eq 0 ] && echo -e "Instace $instance_id started. SSH with ssh -i $KEYPAIR_DIR/$DEFAULT_KP fc@$instance_ip\n"
 	
 }
 
