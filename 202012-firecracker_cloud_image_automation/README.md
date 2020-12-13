@@ -1,7 +1,7 @@
 # Firecracker automation for cloud images + initialization via cloud-init
 
 **Source code for the blog post
-"[Automation to run VMs based on vanilla Cloud Images on Firecracker](https://ongres.com/blog/automation_to_run_virtual_machines_of_cloud_images_on_firecracker]"**
+"[Automation to run VMs based on vanilla Cloud Images on Firecracker](https://ongres.com/blog/automation-to-run-virtual-machines-of-cloud-images-on-firecracker)"**
 
 This directory contains some scripts to help automate the process of creating
 virtual machines with [Firecracker](https://firecracker-microvm.github.io/).
