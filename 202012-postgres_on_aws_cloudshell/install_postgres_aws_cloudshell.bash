@@ -34,7 +34,8 @@ cat << EOF >> .bashrc
 # PostgreSQL on CloudShell
 export PATH=\$PATH:${PG_BIN_DIR}
 
-${PG_BIN_DIR}/pg_ctl -D pgdata start
+# Ensure we can source .bashrc in an essentially idempotent manner
+( ${PG_BIN_DIR}/pg_ctl -D pgdata status > /dev/null ) || ${PG_BIN_DIR}/pg_ctl -D pgdata start
 #
 
 EOF
@@ -54,6 +55,3 @@ ${PG_BIN_DIR}/pg_ctl -D pgdata start
 
 # Create initial database user, so we can use Postgres simply executing "psql"
 ${PG_BIN_DIR}/createdb "${USER}"
-
-# Export PATH for this current session too:
-export PATH=$PATH:${PG_BIN_DIR}
