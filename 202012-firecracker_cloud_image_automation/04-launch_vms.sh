@@ -45,7 +45,7 @@ function launch_vm() {
 	local instance_number=$1
 	local tmpfile=/tmp/.$RANDOM-$RANDOM
 	local socket=$FIRECRACKER_SOCKET.$instance_number
-	local instance_id="id-"$RANDOM-$RANDOM
+	local instance_id=`printf "id%05d%05d" $RANDOM $RANDOM`
 	local log_file=/tmp/.$instance_id.log
 	
 	# Start firecracker daemon
@@ -65,7 +65,11 @@ function launch_vm() {
 	done
 	
 	# VM config
-	firecracker_http_file PUT 'machine-config' conf/firecracker/instance-config.json
+	cat conf/firecracker/instance-config.json | \
+		./tmpl.sh __INSTANCE_VCPUS__ $VM_VCPUS | \
+		./tmpl.sh __INSTANCE_RAM_MB__ $(( $VM_RAM_GB * 1024 )) \
+		> $tmpfile
+	firecracker_http_file PUT 'machine-config' $tmpfile
 	
 	# Drives
 	mkdir -p disks
@@ -133,7 +137,7 @@ function launch_vm() {
 	
 	# Start VM
 	firecracker_http_file PUT 'actions' conf/firecracker/instance-start.json
-	[ $? -eq 0 ] && echo -e "Instace $instance_id started. SSH with ssh -i $KEYPAIR_DIR/$DEFAULT_KP fc@$instance_ip\n"
+	[ $? -eq 0 ] && echo "Instace $instance_id started. SSH with ssh -i $KEYPAIR_DIR/$DEFAULT_KP fc@$instance_ip"
 	
 }
 
@@ -141,5 +145,8 @@ function launch_vm() {
 # Main
 for i in `seq 1 $NUMBER_VMS`
 do
-	launch_vm $i
+	(
+		launch_vm $i
+	)&
 done
+wait

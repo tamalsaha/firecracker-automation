@@ -1,0 +1,28 @@
+- name: apt-get update
+  apt:
+    update_cache: yes
+    cache_valid_time: 3600
+  become: true
+
+- name: gather kernel version
+  command: uname -r
+  register: uname_r
+
+- name: install kernel image, required to load module ip_tables
+  apt:
+    name: "linux-image-{{ uname_r.stdout }}"
+    state: present
+  become: true
+
+- name: install eks snap
+  command: snap install --classic --edge --color=never eks
+  become: true
+
+- name: add user to eks group
+  command: usermod -a -G eks fc
+  become: true
+
+- name: wait for eks to be ready
+  shell: |
+          eks status --wait-ready
+  become: true
