@@ -1,0 +1,6 @@
+{
+    "drive_id": "drivefs",
+    "path_on_host": "__DRIVE_FS__",
+    "is_root_device": false,
+    "is_read_only": false
+  }
