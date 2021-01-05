@@ -7,3 +7,5 @@ users:
     sudo: ALL=(ALL) NOPASSWD:ALL
     ssh_authorized_keys:
       - __SSH_PUB_KEY__
+mounts:
+  - [ /dev/vdb, /opt/data ]
