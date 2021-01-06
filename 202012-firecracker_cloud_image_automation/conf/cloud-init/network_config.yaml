@@ -5,8 +5,6 @@ ethernets:
        macaddress: "AA:FF:00:00:00:01"
     addresses:
       - 169.254.0.1/16
-    nameservers:
-      addresses: [ 8.8.4.4, 8.8.8.8 ]
   eth1:
     match:
       macaddress: "EE:00:00:00:00:__MAC_OCTET__"
