@@ -15,8 +15,12 @@ do
 done
 
 sudo ip link delete $FIRECRACKER_BRIDGE
+sudo iptables -D FORWARD -m conntrack -o $FIRECRACKER_BRIDGE --ctstate RELATED,ESTABLISHED -j ACCEPT
+sudo iptables -D FORWARD --in-interface $FIRECRACKER_BRIDGE -j ACCEPT
 
 rm -rf disks
 rm -rf images
 rm -rf keypairs
+rm -rf drives
+
 [ -f ansible/inventories/eks/hosts.yaml ] && rm ansible/inventories/eks/hosts.yaml
