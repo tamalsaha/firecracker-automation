@@ -12,8 +12,8 @@ cloud-init.
 Edit the `variables` file to suit your needs.
 
 Follow the scripts in the specified order. Some basic Linux CLI tools are
-required like `curl`, `jq`, `tar` with `xz` support, `ssh-keygen`, `iptables`
-and possibly others.
+required like `curl`, `jq`, `tar` with `xz` support, `ssh-keygen`, `iptables`,
+the `binutils` package and possibly others.
 
 A Linux bridge will be created in the host and will be NATTed to the main
 Internet egress device on the host to give connectivity to the created VMs,
@@ -25,3 +25,28 @@ Modify scripts at your convenience. It has only been tested with `bionic`
 [Ubuntu cloud images](https://cloud-images.ubuntu.com/), but in principle should
 work with minor modifications with any Linux cloud image that supports
 initialization via `cloud-init`.
+
+
+# Optional: create EKS cluster on Firecracker VMs
+
+Once the VMs have been created, you may want to run script
+`05-install_eks_via_ansible.sh`. This requires you to have Ansible (2.9+)
+installed (see Ansible source code in `ansible/` folder). It will create an
+[EKS-D compatible](https://snapcraft.io/eks) cluster and will generate/add a
+valid `~/.kube/config` configuration in your (local) environment (provided you
+have `kubectl` installed). After running this script you should be able to
+`kubectl cluster-info` and `kubectl get nodes` successfully.
+
+Please review the `variables` file to ensure you will be creating the desired
+number of nodes. At least `4GB` of RAM are recommended per VM.
+
+You can obviously chain commands. While the VM creation script does not know
+exactly when the `user-data` part is finished (as it happens within the VM), it
+is quite fast, and usually (YMMV) waiting a bit works well. So once scripts `01`
+to `03` are run, you may do something like:
+
+```sh
+time (./04-launch_vms.sh ; sleep 1m; ./05-install_eks_via_ansible.sh )
+```
+
+to create the VMs and EKS cluster in a single line.

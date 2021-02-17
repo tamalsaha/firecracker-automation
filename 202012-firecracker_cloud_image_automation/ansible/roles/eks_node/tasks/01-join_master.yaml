@@ -1,0 +1,4 @@
+- name: join master node
+  command: eks join {{ groups['eks_master'][0] }}:25000/{{ token }}
+  become: true
+  throttle: 1		# Avoid potential problems with K8s rate limiting

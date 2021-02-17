@@ -1,0 +1,20 @@
+- name: install kubectl snap
+  command: snap install --classic --color=never kubectl
+  become: true
+
+- name: ensure /home/fc/.kube
+  file:
+    path: /home/fc/.kube
+    state: directory
+    owner: fc
+    group: fc
+    mode: u+rwx,g-rwx,o-rwx
+
+- name: generate kubectl config from eks
+  shell: |
+          eks config |tee -a /home/fc/.kube/config
+  register: eks_config
+  become: true
+
+- name: copy eks config to host system
+  local_action: copy content={{ eks_config.stdout }} dest={{ eks_config_outfile }}

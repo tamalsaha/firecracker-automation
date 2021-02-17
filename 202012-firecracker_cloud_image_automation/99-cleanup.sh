@@ -19,3 +19,4 @@ sudo ip link delete $FIRECRACKER_BRIDGE
 rm -rf disks
 rm -rf images
 rm -rf keypairs
+[ -f ansible/inventories/eks/hosts.yaml ] && rm ansible/inventories/eks/hosts.yaml
