@@ -1,0 +1,4 @@
+- name: call eks add-node with the tokens per node
+  command: eks add-node --token {{ item }}
+  with_items: "{{ tokens }}"
+  become: true

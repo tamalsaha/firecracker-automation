@@ -1,0 +1,13 @@
+- hosts: eks_master
+  roles:
+    - eks_common
+    - eks_master
+
+- hosts: eks_nodes
+  roles:
+    - eks_common
+    - eks_node
+
+- hosts: eks_master
+  roles:
+    - eks_config

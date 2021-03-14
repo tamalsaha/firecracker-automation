@@ -80,6 +80,13 @@ function launch_vm() {
 		> $tmpfile
 	firecracker_http_file PUT 'drives/rootfs' $tmpfile
 	
+	drive_fs="./drives/$instance_id"
+	cp images/template.disk $drive_fs
+	cat conf/firecracker/data-drives.json | \
+		./tmpl.sh __DRIVE_FS__ $drive_fs \
+		> $tmpfile
+	firecracker_http_file PUT 'drives/drivefs' $tmpfile
+
 	# Networking
 	tap_number_base=$(( ($instance_number - 1) * 2 ))
 	tap_metadata="tap"`printf "%02d" $tap_number_base`
