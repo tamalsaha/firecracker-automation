@@ -11,3 +11,9 @@ target/
 202012-firecracker_cloud_image_automation/drives/
 202012-firecracker_cloud_image_automation/images/
 202012-firecracker_cloud_image_automation/ansible/inventories/eks/hosts.yaml
+
+202103-openebs-s7s/keypairs/
+202103-openebs-s7s/disks/
+202103-openebs-s7s/drives/
+202103-openebs-s7s/images/
+202103-openebs-s7s/ansible/inventories/eks/hosts.yaml

@@ -1,4 +1,10 @@
 - hosts: eks_master
+  gather_facts: false
+  tasks:
+  - name: Wait 600 seconds for target connection to become reachable/usable
+    wait_for_connection: 
+
+- hosts: eks_master
   roles:
     - eks_common
     - eks_master

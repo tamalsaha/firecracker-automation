@@ -19,7 +19,6 @@ sudo iptables -D FORWARD -m conntrack -o $FIRECRACKER_BRIDGE --ctstate RELATED,E
 sudo iptables -D FORWARD --in-interface $FIRECRACKER_BRIDGE -j ACCEPT
 
 rm -rf disks
-rm -rf images
 rm -rf keypairs
 rm -rf drives
 
