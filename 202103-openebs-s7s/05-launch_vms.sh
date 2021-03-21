@@ -41,6 +41,7 @@ function script_exit() {
 }
 
 
+
 function launch_vm() {
 	local instance_number=$1
 	local tmpfile=/tmp/.$RANDOM-$RANDOM
@@ -80,12 +81,19 @@ function launch_vm() {
 		> $tmpfile
 	firecracker_http_file PUT 'drives/rootfs' $tmpfile
 	
-	drive_fs="./drives/$instance_id"
-	cp images/template.disk $drive_fs
-	cat conf/firecracker/data-drives.json | \
-		./tmpl.sh __DRIVE_FS__ $drive_fs \
-		> $tmpfile
-	firecracker_http_file PUT 'drives/drivefs' $tmpfile
+	drive_vm_dir="./drives/$instance_id"
+	mkdir -p ${drive_vm_dir}
+
+	for drive_ix in $(seq 1 ${DRIVES_PER_VM}) 
+	do
+		cp images/template.disk ${drive_vm_dir}/${instance_id}_${drive_ix}
+		cat conf/firecracker/data-drives.json | \
+			./tmpl.sh __DRIVE_FS__ ${drive_vm_dir}/${instance_id}_${drive_ix} | \
+			./tmpl.sh __DRIVE_ID__ ${instance_id}_${drive_ix} \
+			> $tmpfile
+		firecracker_http_file PUT 'drives/'''${instance_id}_${drive_ix}'''' $tmpfile
+		# firecracker_http_file PUT 'drives/drivefs' $tmpfile
+	done
 
 	# Networking
 	tap_number_base=$(( ($instance_number - 1) * 2 ))

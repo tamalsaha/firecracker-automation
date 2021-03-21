@@ -12,6 +12,11 @@
       loop:
         - apt-transport-https
         - python3-pip
+        - open-iscsi
+    - name: Enabling iscsi
+      ansible.builtin.systemd:
+        enabled: yes
+        name: iscsi
     - name: Install pip dependencies
       pip:
         name: "{{ item }}"

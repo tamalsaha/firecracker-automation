@@ -1,4 +1,5 @@
 #!/bin/bash
+# This only generates an empty disk layout
 
 source variables
 
@@ -9,6 +10,4 @@ function generate_drive() {
 	mkfs.ext4 $DRIVE_TEMPLATE > /dev/null 2>&1
 }
 
-[ -e images ] || mkdir -p images/
-
-[ -f $DRIVE_TEMPLATE ] || generate_drive
+[ ! -f $DRIVE_TEMPLATE ] || generate_drive
