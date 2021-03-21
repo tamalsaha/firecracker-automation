@@ -27,6 +27,21 @@ work with minor modifications with any Linux cloud image that supports
 initialization via `cloud-init`.
 
 
+## Requirements
+
+Install Ansible's kubernetes.core:
+
+```
+ansible-galaxy collection install kubernetes.core
+```
+
+Install Helm
+
+```
+curl https://raw.githubusercontent.com/helm/helm/master/scripts/get-helm-3 | bash
+```
+
+
 # Optional: create EKS cluster on Firecracker VMs
 
 Once the VMs have been created, you may want to run script

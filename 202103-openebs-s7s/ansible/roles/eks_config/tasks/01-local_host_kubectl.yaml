@@ -16,5 +16,12 @@
   register: eks_config
   become: true
 
+- name: Change file ownership, group and permissions
+  file:
+    path: /home/fc/.kube
+    owner: fc
+    group: fc
+    mode: '0777'
+
 - name: copy eks config to host system
   local_action: copy content={{ eks_config.stdout }} dest={{ eks_config_outfile }}

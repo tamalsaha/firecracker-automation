@@ -5,6 +5,9 @@ target/
 .project
 .classpath
 .settings/
+**/.venv
+**/venv
+
 
 202012-firecracker_cloud_image_automation/keypairs/
 202012-firecracker_cloud_image_automation/disks/
