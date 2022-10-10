@@ -47,7 +47,7 @@ function launch_vm() {
 	local socket=$FIRECRACKER_SOCKET.$instance_number
 	local instance_id=`printf "id%05d%05d" $RANDOM $RANDOM`
 	local log_file=/tmp/.$instance_id.log
-	
+
 	# Start firecracker daemon
 	(
 		rm -f $socket
@@ -58,19 +58,19 @@ function launch_vm() {
 		echo $pid > $FIRECRACKER_PID_DIR/$pid
 		echo "Started Firecracker with pid=$pid, logs: $log_file"
 	)
-	
+
 	# Wait for API server to start
 	while [ ! -e $socket ]; do
 	    sleep 0.1s
 	done
-	
+
 	# VM config
 	cat conf/firecracker/instance-config.json | \
 		./tmpl.sh __INSTANCE_VCPUS__ $VM_VCPUS | \
 		./tmpl.sh __INSTANCE_RAM_MB__ $(( $VM_RAM_GB * 1024 )) \
 		> $tmpfile
 	firecracker_http_file PUT 'machine-config' $tmpfile
-	
+
 	# Drives
 	mkdir -p disks
 	root_fs="./disks/"$( basename $IMAGE_ROOTFS).$instance_id
@@ -79,26 +79,26 @@ function launch_vm() {
 		./tmpl.sh __ROOT_FS__ $root_fs \
 		> $tmpfile
 	firecracker_http_file PUT 'drives/rootfs' $tmpfile
-	
+
 	# Networking
 	tap_number_base=$(( ($instance_number - 1) * 2 ))
 	tap_metadata="tap"`printf "%02d" $tap_number_base`
 	tap_main="tap"`printf "%02d" $(( $tap_number_base + 1 ))`
 	create_vm_taps $tap_metadata $tap_main
-	
+
 	cat conf/firecracker/network_interfaces.eth0.json | \
 		./tmpl.sh __TAP_METADATA__ $tap_metadata \
 		> $tmpfile
-	
+
 	firecracker_http_file PUT 'network-interfaces/eth0' $tmpfile
-	
+
 	mac_octet=`printf '%02x' $(( $instance_number + 1 ))`
 	cat conf/firecracker/network_interfaces.eth1.json | \
 		./tmpl.sh __MAC_OCTET__ $mac_octet | \
 		./tmpl.sh __TAP_MAIN__ $tap_main \
 		> $tmpfile
 	firecracker_http_file PUT 'network-interfaces/eth1' $tmpfile
-	
+
 	# Boot configuration
 	instance_ip=$VMS_NETWORK_PREFIX"."$(( $instance_number + 1 ))
 	network_config_base64=$( \
@@ -116,7 +116,7 @@ function launch_vm() {
 		./tmpl.sh __INITRD__ $INITRD \
 		> $tmpfile
 	firecracker_http_file PUT 'boot-source' $tmpfile
-	
+
 	# Metadata
 	cat conf/cloud-init/meta-data.yaml | \
 		./tmpl.sh __INSTANCE_ID__ $instance_id | \
@@ -124,21 +124,21 @@ function launch_vm() {
 		jq --raw-input --slurp '{ "latest": { "meta-data": . }}' \
 		> $tmpfile
 	firecracker_http_file PUT 'mmds' $tmpfile
-	
+
 	# User data
 	cat conf/cloud-init/user-data.yaml | \
 		./tmpl.sh __SSH_PUB_KEY__ "`cat $KEYPAIR_DIR/$DEFAULT_KP.pub`" | \
 		jq --raw-input --slurp '{ "latest": { "user-data": . }}' \
 		> $tmpfile
 	firecracker_http_file PATCH 'mmds' $tmpfile
-	
+
 	# Cleanup
 	rm $tmpfile
-	
+
 	# Start VM
 	firecracker_http_file PUT 'actions' conf/firecracker/instance-start.json
 	[ $? -eq 0 ] && echo "Instace $instance_id started. SSH with ssh -i $KEYPAIR_DIR/$DEFAULT_KP fc@$instance_ip"
-	
+
 }
 
 
